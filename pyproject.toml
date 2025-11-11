@@ -1,0 +1,43 @@
+[project]
+name = "foobar"
+version = "0.1.0"
+description = "All things foobar"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+authors = [{ name = "Martim Lobao", email = "martim@foobar.com" }]
+dependencies = [
+  "marimo>=0.17.7",
+]
+
+[project.scripts]
+foobar = "foobar:main"
+
+[dependency-groups]
+dev = [
+  "bandit>=1.8.6",
+  "coverage>=7.10.6",
+  "docformatter>=1.7.7",
+  "httpx>=0.27.2",
+  "hypothesis>=6.139.2",
+  "ipython>=9.5.0",
+  "mypy>=1.18.2",
+  "pylint>=3.3.8",
+  "pyright>=1.1.405",
+  "pytest>=8.4.2",
+  "pytest-cov>=7.0.0",
+  "ruff>=0.13.1",
+  "rumdl>=0.0.174",
+  "tombi>=0.6.42",
+  "yamllint>=1.37.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.8,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.pyright]
+include = ["src"]
+typeCheckingMode = "strict"
+
+[tool.pytest.ini_options]
+addopts = "--cov=src --cov-fail-under=80"
