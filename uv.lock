@@ -188,6 +188,55 @@ wheels = [
 ]
 
 [[package]]
+name = "foobar"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "marimo" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "bandit" },
+    { name = "coverage" },
+    { name = "docformatter" },
+    { name = "httpx" },
+    { name = "hypothesis" },
+    { name = "ipython" },
+    { name = "mypy" },
+    { name = "pylint" },
+    { name = "pyright" },
+    { name = "pytest" },
+    { name = "pytest-cov" },
+    { name = "ruff" },
+    { name = "rumdl" },
+    { name = "tombi" },
+    { name = "yamllint" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "marimo", specifier = ">=0.17.7" }]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "bandit", specifier = ">=1.8.6" },
+    { name = "coverage", specifier = ">=7.10.6" },
+    { name = "docformatter", specifier = ">=1.7.7" },
+    { name = "httpx", specifier = ">=0.27.2" },
+    { name = "hypothesis", specifier = ">=6.139.2" },
+    { name = "ipython", specifier = ">=9.5.0" },
+    { name = "mypy", specifier = ">=1.18.2" },
+    { name = "pylint", specifier = ">=3.3.8" },
+    { name = "pyright", specifier = ">=1.1.405" },
+    { name = "pytest", specifier = ">=8.4.2" },
+    { name = "pytest-cov", specifier = ">=7.0.0" },
+    { name = "ruff", specifier = ">=0.13.1" },
+    { name = "rumdl", specifier = ">=0.0.174" },
+    { name = "tombi", specifier = ">=0.6.42" },
+    { name = "yamllint", specifier = ">=1.37.1" },
+]
+
+[[package]]
 name = "h11"
 version = "0.16.0"
 source = { registry = "https://pypi.org/simple" }
@@ -349,7 +398,7 @@ wheels = [
 
 [[package]]
 name = "marimo"
-version = "0.17.7"
+version = "0.18.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "click" },
@@ -370,9 +419,9 @@ dependencies = [
     { name = "uvicorn" },
     { name = "websockets" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d0/46/9c1985a5f5e299bf51e787003218e02c755326549557a2c3700c7238aff3/marimo-0.17.7.tar.gz", hash = "sha256:d35d2ae4b1221e8174bab3f3bd7ec6791f0957efeedc62e824effce687644333", size = 33462833, upload-time = "2025-11-04T23:40:22.15Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/69/91/7648bc680f6c583bc93bcc0034f835609d3f4ef89082f52d5022388b1a46/marimo-0.18.0.tar.gz", hash = "sha256:7a6ccd943cf817c56e8e35b7daeb67240b398d27f2f8a0647ef62c7b7e57ef27", size = 33493100, upload-time = "2025-11-20T20:51:22.898Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/35/db/7f857b13e83ac0ea7827e5580d9199e186dea275e466890ac185f16e81f2/marimo-0.17.7-py3-none-any.whl", hash = "sha256:1254c5bd7597e3977ad74f4f261acaccaafcfff09c154efffc8cdcb1c8be10ed", size = 33978023, upload-time = "2025-11-04T23:40:26.702Z" },
+    { url = "https://files.pythonhosted.org/packages/d8/e5/414212416fbd0769014c6a6660bfeaaecca69baf5ecef3125204ffacc8bc/marimo-0.18.0-py3-none-any.whl", hash = "sha256:3cd46b889294edf9af57dbf9d4239b4c262ac8b26ca131278d910b991af78f1e", size = 34007479, upload-time = "2025-11-20T20:51:27.116Z" },
 ]
 
 [[package]]
@@ -477,55 +526,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/7d/a2/25208347aa4c2d82a265cf4bc0873aaf5069f525c0438146821e7fc19ef5/narwhals-2.11.0.tar.gz", hash = "sha256:d23f3ea7efc6b4d0355444a72de6b8fa3011175585246c3400c894a7583964af", size = 589233, upload-time = "2025-11-10T16:28:35.675Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c0/a1/4d21933898e23b011ae0528151b57a9230a62960d0919bf2ee48c7f5c20a/narwhals-2.11.0-py3-none-any.whl", hash = "sha256:a9795e1e44aa94e5ba6406ef1c5ee4c172414ced4f1aea4a79e5894f0c7378d4", size = 423069, upload-time = "2025-11-10T16:28:33.522Z" },
-]
-
-[[package]]
-name = "foobar"
-version = "0.1.0"
-source = { editable = "." }
-dependencies = [
-    { name = "marimo" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "bandit" },
-    { name = "coverage" },
-    { name = "docformatter" },
-    { name = "httpx" },
-    { name = "hypothesis" },
-    { name = "ipython" },
-    { name = "mypy" },
-    { name = "pylint" },
-    { name = "pyright" },
-    { name = "pytest" },
-    { name = "pytest-cov" },
-    { name = "ruff" },
-    { name = "rumdl" },
-    { name = "tombi" },
-    { name = "yamllint" },
-]
-
-[package.metadata]
-requires-dist = [{ name = "marimo", specifier = ">=0.17.7" }]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "bandit", specifier = ">=1.8.6" },
-    { name = "coverage", specifier = ">=7.10.6" },
-    { name = "docformatter", specifier = ">=1.7.7" },
-    { name = "httpx", specifier = ">=0.27.2" },
-    { name = "hypothesis", specifier = ">=6.139.2" },
-    { name = "ipython", specifier = ">=9.5.0" },
-    { name = "mypy", specifier = ">=1.18.2" },
-    { name = "pylint", specifier = ">=3.3.8" },
-    { name = "pyright", specifier = ">=1.1.405" },
-    { name = "pytest", specifier = ">=8.4.2" },
-    { name = "pytest-cov", specifier = ">=7.0.0" },
-    { name = "ruff", specifier = ">=0.13.1" },
-    { name = "rumdl", specifier = ">=0.0.174" },
-    { name = "tombi", specifier = ">=0.6.42" },
-    { name = "yamllint", specifier = ">=1.37.1" },
 ]
 
 [[package]]
