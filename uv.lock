@@ -35,7 +35,7 @@ wheels = [
 
 [[package]]
 name = "bandit"
-version = "1.8.6"
+version = "1.9.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "colorama", marker = "sys_platform == 'win32'" },
@@ -43,9 +43,9 @@ dependencies = [
     { name = "rich" },
     { name = "stevedore" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/fb/b5/7eb834e213d6f73aace21938e5e90425c92e5f42abafaf8a6d5d21beed51/bandit-1.8.6.tar.gz", hash = "sha256:dbfe9c25fc6961c2078593de55fd19f2559f9e45b99f1272341f5b95dea4e56b", size = 4240271, upload-time = "2025-07-06T03:10:50.9Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/cf/72/f704a97aac430aeb704fa16435dfa24fbeaf087d46724d0965eb1f756a2c/bandit-1.9.2.tar.gz", hash = "sha256:32410415cd93bf9c8b91972159d5cf1e7f063a9146d70345641cd3877de348ce", size = 4241659, upload-time = "2025-11-23T21:36:18.722Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/48/ca/ba5f909b40ea12ec542d5d7bdd13ee31c4d65f3beed20211ef81c18fa1f3/bandit-1.8.6-py3-none-any.whl", hash = "sha256:3348e934d736fcdb68b6aa4030487097e23a501adf3e7827b63658df464dddd0", size = 133808, upload-time = "2025-07-06T03:10:49.134Z" },
+    { url = "https://files.pythonhosted.org/packages/55/1a/5b0320642cca53a473e79c7d273071b5a9a8578f9e370b74da5daa2768d7/bandit-1.9.2-py3-none-any.whl", hash = "sha256:bda8d68610fc33a6e10b7a8f1d61d92c8f6c004051d5e946406be1fb1b16a868", size = 134377, upload-time = "2025-11-23T21:36:17.39Z" },
 ]
 
 [[package]]
@@ -185,6 +185,55 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/cc/28/c14e053b6762b1044f34a13aab6859bbf40456d37d23aa286ac24cfd9a5d/executing-2.2.1.tar.gz", hash = "sha256:3632cc370565f6648cc328b32435bd120a1e4ebb20c77e3fdde9a13cd1e533c4", size = 1129488, upload-time = "2025-09-01T09:48:10.866Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c1/ea/53f2148663b321f21b5a606bd5f191517cf40b7072c0497d3c92c4a13b1e/executing-2.2.1-py2.py3-none-any.whl", hash = "sha256:760643d3452b4d777d295bb167ccc74c64a81df23fb5e08eff250c425a4b2017", size = 28317, upload-time = "2025-09-01T09:48:08.5Z" },
+]
+
+[[package]]
+name = "foobar"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "marimo" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "bandit" },
+    { name = "coverage" },
+    { name = "docformatter" },
+    { name = "httpx" },
+    { name = "hypothesis" },
+    { name = "ipython" },
+    { name = "mypy" },
+    { name = "pylint" },
+    { name = "pyright" },
+    { name = "pytest" },
+    { name = "pytest-cov" },
+    { name = "ruff" },
+    { name = "rumdl" },
+    { name = "tombi" },
+    { name = "yamllint" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "marimo", specifier = ">=0.17.7" }]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "bandit", specifier = ">=1.8.6" },
+    { name = "coverage", specifier = ">=7.10.6" },
+    { name = "docformatter", specifier = ">=1.7.7" },
+    { name = "httpx", specifier = ">=0.27.2" },
+    { name = "hypothesis", specifier = ">=6.139.2" },
+    { name = "ipython", specifier = ">=9.5.0" },
+    { name = "mypy", specifier = ">=1.18.2" },
+    { name = "pylint", specifier = ">=3.3.8" },
+    { name = "pyright", specifier = ">=1.1.405" },
+    { name = "pytest", specifier = ">=8.4.2" },
+    { name = "pytest-cov", specifier = ">=7.0.0" },
+    { name = "ruff", specifier = ">=0.13.1" },
+    { name = "rumdl", specifier = ">=0.0.174" },
+    { name = "tombi", specifier = ">=0.6.42" },
+    { name = "yamllint", specifier = ">=1.37.1" },
 ]
 
 [[package]]
@@ -477,55 +526,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/7d/a2/25208347aa4c2d82a265cf4bc0873aaf5069f525c0438146821e7fc19ef5/narwhals-2.11.0.tar.gz", hash = "sha256:d23f3ea7efc6b4d0355444a72de6b8fa3011175585246c3400c894a7583964af", size = 589233, upload-time = "2025-11-10T16:28:35.675Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c0/a1/4d21933898e23b011ae0528151b57a9230a62960d0919bf2ee48c7f5c20a/narwhals-2.11.0-py3-none-any.whl", hash = "sha256:a9795e1e44aa94e5ba6406ef1c5ee4c172414ced4f1aea4a79e5894f0c7378d4", size = 423069, upload-time = "2025-11-10T16:28:33.522Z" },
-]
-
-[[package]]
-name = "foobar"
-version = "0.1.0"
-source = { editable = "." }
-dependencies = [
-    { name = "marimo" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "bandit" },
-    { name = "coverage" },
-    { name = "docformatter" },
-    { name = "httpx" },
-    { name = "hypothesis" },
-    { name = "ipython" },
-    { name = "mypy" },
-    { name = "pylint" },
-    { name = "pyright" },
-    { name = "pytest" },
-    { name = "pytest-cov" },
-    { name = "ruff" },
-    { name = "rumdl" },
-    { name = "tombi" },
-    { name = "yamllint" },
-]
-
-[package.metadata]
-requires-dist = [{ name = "marimo", specifier = ">=0.17.7" }]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "bandit", specifier = ">=1.8.6" },
-    { name = "coverage", specifier = ">=7.10.6" },
-    { name = "docformatter", specifier = ">=1.7.7" },
-    { name = "httpx", specifier = ">=0.27.2" },
-    { name = "hypothesis", specifier = ">=6.139.2" },
-    { name = "ipython", specifier = ">=9.5.0" },
-    { name = "mypy", specifier = ">=1.18.2" },
-    { name = "pylint", specifier = ">=3.3.8" },
-    { name = "pyright", specifier = ">=1.1.405" },
-    { name = "pytest", specifier = ">=8.4.2" },
-    { name = "pytest-cov", specifier = ">=7.0.0" },
-    { name = "ruff", specifier = ">=0.13.1" },
-    { name = "rumdl", specifier = ">=0.0.174" },
-    { name = "tombi", specifier = ">=0.6.42" },
-    { name = "yamllint", specifier = ">=1.37.1" },
 ]
 
 [[package]]
