@@ -2,12 +2,19 @@
 
 ## Tooling & Environment
 
+> [!IMPORTANT]
+> **ALWAYS USE [`uv`](https://docs.astral.sh/uv/) EXCLUSIVELY.**
+> Do **not** invoke `pip` under any circumstance. These instructions supersede
+> any conflicting guidance.
+<!-- -->
+> [!IMPORTANT]
+> **ALWAYS run the full suite of quality checks whenever making any changes.**
+
 - The project targets **Python 3.13** and relies on [`uv`](https://docs.astral.sh/uv/) for
   dependency management, environment creation, and command execution.
 - Run `uv lock` after modifying `pyproject.toml`.
 - Use `uv run <command>` to execute Python entrypoints or tooling within the managed virtual
   environment.
-- ALWAYS run the full suite of quality checks whenever making any changes.
 
 ## Mandatory Quality Checks
 
