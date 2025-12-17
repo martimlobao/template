@@ -1,26 +1,64 @@
-.PHONY: check
+# Parallel by default (overridable): JOBS=2 make
+JOBS ?= $(shell nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)
+MAKEFLAGS += -j$(JOBS) --output-sync=target
+
+.PHONY: check lint typecheck test fix repl \
+        lint-ruff lint-ruff-format lint-docfmt lint-pylint lint-bandit lint-yamllint lint-rumdl lint-tombi \
+        type-ty type-pyright
+
+# High-level aggregate
 check: lint typecheck test
 
-.PHONY: lint
-lint:
+#################
+# Lint (parallel)
+#################
+lint: lint-ruff lint-ruff-format lint-docfmt lint-pylint lint-bandit lint-yamllint lint-rumdl lint-tombi
+
+lint-ruff:
 	uv run ruff check
+
+lint-ruff-format:
+	uv run ruff format --check
+
+lint-docfmt:
 	uv run docformatter --check -r src tests
-	uv run pylint src
+
+lint-pylint:
+	uv run pylint src tests
+
+lint-bandit:
 	uv run bandit -r src
+
+lint-yamllint:
 	uv run yamllint --strict .
+
+lint-rumdl:
 	uv run rumdl check
+
+lint-tombi:
 	uv run tombi check
+	uv run tombi format --check
 
-.PHONY: typecheck
-typecheck:
-	uv run mypy src tests
-	uv run pyright src tests
+#####################
+# Typecheck (parallel)
+#####################
+typecheck: type-pyright type-ty
 
-.PHONY: test
+type-pyright:
+	uv run pyright
+
+type-ty:
+	uv run ty check src tests
+
+########
+# Tests
+########
 test:
 	uv run pytest
 
-.PHONY: fix
+########
+# Fixes (keep sequential to avoid races)
+########
 fix:
 	uv run ruff format
 	uv run ruff check --fix
@@ -29,6 +67,8 @@ fix:
 	uv run rumdl check --fix
 	uv run tombi format
 
-.PHONY: repl
+########
+# Others
+########
 repl:
 	uv run ipython
