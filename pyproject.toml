@@ -5,9 +5,7 @@ description = "All things foobar"
 readme = "README.md"
 requires-python = ">=3.13,<3.14"
 authors = [{ name = "Martim Lobao", email = "martim@foobar.com" }]
-dependencies = [
-  "marimo>=0.17.7",
-]
+dependencies = []
 
 [project.scripts]
 foobar = "foobar:main"
@@ -20,7 +18,6 @@ dev = [
   "httpx>=0.27.2",
   "hypothesis>=6.139.2",
   "ipython>=9.5.0",
-  "mypy>=1.18.2",
   "pylint>=3.3.8",
   "pyright>=1.1.405",
   "pytest>=8.4.2",
@@ -28,6 +25,7 @@ dev = [
   "ruff>=0.13.1",
   "rumdl>=0.0.174",
   "tombi>=0.6.42",
+  "ty>=0.0.2",
   "yamllint>=1.37.1",
 ]
 
@@ -39,5 +37,5 @@ build-backend = "uv_build"
 include = ["src"]
 typeCheckingMode = "strict"
 
-[tool.pytest.ini_options]
-addopts = "--cov=src --cov-fail-under=80"
+[tool.pytest]
+addopts = ["--cov-fail-under=80", "--cov=src"]
