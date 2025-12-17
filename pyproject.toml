@@ -39,5 +39,5 @@ build-backend = "uv_build"
 include = ["src"]
 typeCheckingMode = "strict"
 
-[tool.pytest.ini_options]
-addopts = "--cov=src --cov-fail-under=80"
+[tool.pytest]
+addopts = ["--cov-fail-under=80", "--cov=src"]
