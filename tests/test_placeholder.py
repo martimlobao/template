@@ -1,4 +1,4 @@
-from foobar import main
+from foobar.main import main
 
 
 def test_main() -> None:
