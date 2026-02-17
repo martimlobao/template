@@ -3,7 +3,7 @@ JOBS ?= $(shell nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)
 MAKEFLAGS += -j$(JOBS) --output-sync=target
 
 .PHONY: check lint typecheck test fix repl \
-        lint-ruff lint-ruff-format lint-docfmt lint-pylint lint-bandit lint-yamllint lint-rumdl lint-tombi \
+        lint-ruff lint-ruff-format lint-docfmt lint-bandit lint-yamllint lint-rumdl lint-tombi \
         type-ty type-pyright
 
 # High-level aggregate
@@ -12,7 +12,7 @@ check: lint typecheck test
 #################
 # Lint (parallel)
 #################
-lint: lint-ruff lint-ruff-format lint-docfmt lint-pylint lint-bandit lint-yamllint lint-rumdl lint-tombi
+lint: lint-ruff lint-ruff-format lint-docfmt lint-bandit lint-yamllint lint-rumdl lint-tombi
 
 lint-ruff:
 	uv run ruff check
@@ -22,9 +22,6 @@ lint-ruff-format:
 
 lint-docfmt:
 	uv run docformatter --check -r src tests
-
-lint-pylint:
-	uv run pylint src tests
 
 lint-bandit:
 	uv run bandit -r src
@@ -48,7 +45,7 @@ type-pyright:
 	uv run pyright
 
 type-ty:
-	uv run ty check src tests
+	uv run ty check
 
 ########
 # Tests
@@ -62,10 +59,17 @@ test:
 fix:
 	uv run ruff format
 	uv run ruff check --fix
-	uv run docformatter -r src tests
+	uv run docformatter -i -r src tests
 	uv run rumdl fmt
 	uv run rumdl check --fix
 	uv run tombi format
+
+
+########
+# API
+########
+api-local:
+	uv run api
 
 ########
 # Others
