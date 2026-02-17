@@ -22,6 +22,9 @@ ignore = [
   "EM102",  # f-string-in-exception
   "G001",  # logging-string-format
   "G004",  # logging-f-string
+  "TC001",  # typing-only-first-party-import
+  "TC002",  # typing-only-third-party-import
+  "TC003",  # typing-only-standard-library-import
   "TRY003",  # raise-vanilla-args
   "T201",  # print
   "UP040",  # non-pep695-type-alias
@@ -38,12 +41,10 @@ ignore = [
   "Q003",  # avoidable-escaped-quote
   "COM812",  # missing-trailing-comma
   "COM819",  # prohibited-trailing-comma
-  "ISC001",  # single-line-implicit-string-concatenation
-  "ISC002",  # multi-line-implicit-string-concatenation
 ]
 
 [lint.per-file-ignores]
-"tests/**/*.py" = [
+"{tests/**/*.py,**/test_*.py}" = [
   # unnecessary for tests
   "D100",  # undocumented-public-module
   "D101",  # undocumented-public-class
@@ -53,23 +54,25 @@ ignore = [
   "D105",  # undocumented-magic-method
   "D106",  # undocumented-public-nested-class
   "D107",  # undocumented-public-init
+  "PLR2004",  # magic-value-comparison
   # invalid for tests
   "INP001",  # implicit-namespace-package
   "S101",  # assert
+  "SLF001",  # private-member-access
 ]
 
 [lint.mccabe]
 # Adjust level of function complexity for error `C901`.
 max-complexity = 15
 
-[lint.isort]
-known-first-party = ["strategies"]
-
 [lint.pydocstyle]
 convention = "google"
 
 [lint.pycodestyle]
-max-doc-length = 80
+max-doc-length = 79
+
+[lint.pylint]
+max-args = 7
 
 [format]
 docstring-code-format = true

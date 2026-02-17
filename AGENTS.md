@@ -4,64 +4,94 @@
 
 > [!IMPORTANT]
 > **ALWAYS USE [`uv`](https://docs.astral.sh/uv/) EXCLUSIVELY.**
-> Do **not** invoke `pip` under any circumstance. These instructions supersede
-> any conflicting guidance.
-<!-- -->
+> Do **not** invoke `pip` under any circumstance.
+
 > [!IMPORTANT]
 > **ALWAYS run the full suite of quality checks whenever making any changes.**
 
-- The project targets **Python 3.13** and relies on [`uv`](https://docs.astral.sh/uv/) for
-  dependency management, environment creation, and command execution.
-- Run `uv lock` after modifying `pyproject.toml`.
-- Use `uv run <command>` to execute Python entrypoints or tooling within the managed virtual
-  environment.
+- The project targets **Python 3.13** and uses `uv` for dependency
+  management and command execution
+- Run `uv lock` after modifying `pyproject.toml`
+- Use `uv run <command>` to execute Python entrypoints or tooling
 
-## Mandatory Quality Checks
+## Quality Checks
 
-Before committing changes and ALWAYS when creating a PR, run the full suite of quality checks. You
-can use the provided `Makefile` targets to run the quality checks:
+Before committing changes and when creating a PR, run:
 
 ```bash
-make lint      # Ruff, Docformatter, Pylint, Bandit, Yamllint, and others
-make typecheck # Mypy over src/ and tests/
-make test      # Pytest test suite
+make fix       # Auto-apply formatting and fixes
+make lint      # Linting checks
+make typecheck # Type checking
+make test      # Test suite
 ```
 
-Alternatively, execute the equivalent `uv run ...` commands directly if you need finer-grained
-control.
+Use `make fix` to auto-apply formatting before addressing remaining lint findings.
 
-Use `make fix` to auto-apply formatting (Ruff formatter and Docformatter) and re-run Ruff with
-autofix enabled before addressing remaining lint findings.
+Any changes will be rejected if quality checks fail.
 
-Any changes you make will be rejected if the quality checks fail.
+## Code Quality Best Practices
 
-## Project Setup
+### Refactoring Over Patching
 
-To run the project, run any of the available commands listed in the `pyproject.toml` file. For
-example, run `uv run api` to start the FastAPI server.
+When code becomes complex or shows signs of spaghetti code, refactor for
+clarity rather than adding patches. Shorter implementations are preferred
+over longer ones. If you notice code becoming unwieldy, take time to
+refactor it properly rather than applying quick fixes.
+
+### Minimize Duplication
+
+Look for opportunities to reduce code duplication and use modular
+patterns. Extract common logic into reusable functions or modules.
+
+### Reduce Lines of Code
+
+Actively look for opportunities to reduce LOC without resorting to obscure
+implementations. Prefer concise, readable code over verbose solutions.
+
+### Planning
+
+For complex changes, create detailed plans before coding, especially for multi-file refactors.
+Research the codebase first using search tools to understand existing patterns and architecture.
+Always ask the user for guidance on intended direction and desired outcome unless and until you are
+confident in your understanding of the codebase and the user's intent. Push back if the request
+does not seem possible or feasible, and propose alternative solutions if appropriate.
+
+> [!IMPORTANT]
+> Be biased towards asking more questions rather than making assumptions.
+
+### Test-Driven Development
+
+When implementing new features, write tests first, confirm they fail, then
+implement. Iterate until all tests pass. Tests provide clear targets for
+implementation.
+
+### Codebase Understanding
+
+Before adding new code, use search tools to understand existing patterns
+and follow them. Maintain consistency with the codebase architecture and
+conventions.
+
+### Write Tests
+
+Always write tests for new features or bug fixes. Maintain at least 80%
+coverage. Use pytest fixtures in `tests/conftest.py` to share setup.
+
+## PR Guidelines
+
+- PR titles should follow the [semantic pull request](https://github.com/apps/semantic-pull-request)
+  format: `feat: <description>`, `fix: <description>`, etc.
+- Descriptions should be concise and reflect all changes in the PR, not just the last commit
+- Include high-level description of main changes in the PR body
 
 ## Repository Layout
 
-- Source code follows the `src/` layout (primary package lives under `src/foobar/`).
-- Tests reside under `tests/` and use **pytest**.
-- Tooling configuration lives alongside the project root files (e.g., `pyproject.toml`,
-  `ruff.toml`, `mypy.ini`, `taplo.toml`). Refer to these files when adjusting linting or formatting
-  behavior.
+- Source code follows the `src/` layout (primary package lives under `src/foobar/`)
+- Tests reside under `tests/` and use **pytest**
+- Tooling configuration lives alongside project root files (e.g., `pyproject.toml`, `ruff.toml`)
 
 ## Coding Guidelines
 
-- Adhere to SOLID principles.
-- Prefer explicit type hints—`mypy` treats the codebase as fully typed.
-- Keep modules small and focused; shared logic should live inside the `foobar` package to ensure
-  import paths remain consistent for both runtime and tests.
-- When adding new dependencies, use `uv add` to add them to `pyproject.toml` (or `uv add --dev` for
-  development dependencies).
-- Tests should accompany new features or bug fixes; use pytest fixtures in `tests/conftest.py` to
-  share setup. The required coverage is at least 80%.
-
-## Additional Notes
-
-- The repository currently exposes a basic CLI entrypoint; expanding to APIs or services should
-  follow the same tooling conventions.
-- These instructions apply to the entire repository—nested `AGENTS.md` files do not exist at the
-  moment. If you add one in the future, ensure its scope is respected.
+- Adhere to SOLID principles
+- Prefer explicit type hints—`ty` and `pyright` treat the codebase as fully typed
+- Keep modules small and focused; shared logic should live inside the `nhd` package
+- When adding new dependencies, use `uv add` (or `uv add --dev` for development dependencies)
