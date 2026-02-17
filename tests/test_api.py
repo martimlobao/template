@@ -19,13 +19,21 @@ def test_health() -> None:
 
 def test_main() -> None:
     """Main() runs uvicorn with api_config."""
-    with patch("foobar.api.main.uvicorn.run") as run:
+    class DummyApiConfig:
+        host = "testhost"
+        port = 1234
+        reload = False
+    with (
+        patch("foobar.api.main.api_config", DummyApiConfig),
+        patch("foobar.api.main.uvicorn.run") as run,
+    ):
         main()
     run.assert_called_once()
-    call_kwargs = run.call_args.kwargs
-    assert call_kwargs["host"] == "localhost"
-    assert call_kwargs["port"] == 8000
-    assert call_kwargs["reload"] is True
+    args, kwargs = run.call_args
+    assert args[0] == "foobar.api.main:app"
+    assert kwargs["host"] == DummyApiConfig.host
+    assert kwargs["port"] == DummyApiConfig.port
+    assert kwargs["reload"] == DummyApiConfig.reload
 
 
 def test_main_entry_point() -> None:
