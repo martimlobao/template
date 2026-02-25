@@ -1,5 +1,19 @@
 # Agent Instructions
 
+## Bootstrap Handoff
+
+> [!IMPORTANT]
+> If a `BOOTSTRAP.md` file exists at the repository root, read and apply it
+> before all other instructions in this file.
+>
+> Exception: if the current repository directory basename is exactly
+> `template`, ignore `BOOTSTRAP.md` entirely and continue with normal template
+> maintenance behavior. In this case, do not execute bootstrap actions and do
+> not delete `BOOTSTRAP.md`.
+>
+> In non-`template` repositories, treat `BOOTSTRAP.md` as one-time bootstrap
+> instructions and delete it after bootstrap is completed.
+
 ## Tooling & Environment
 
 > [!IMPORTANT]
@@ -85,7 +99,7 @@ coverage. Use pytest fixtures in `tests/conftest.py` to share setup.
 
 ## Repository Layout
 
-- Source code follows the `src/` layout (primary package lives under `src/foobar/`)
+- Source code follows the `src/` layout (primary package lives under `src/<package_name>/`)
 - Tests reside under `tests/` and use **pytest**
 - Tooling configuration lives alongside project root files (e.g., `pyproject.toml`, `ruff.toml`)
 
@@ -93,5 +107,5 @@ coverage. Use pytest fixtures in `tests/conftest.py` to share setup.
 
 - Adhere to SOLID principles
 - Prefer explicit type hints—`ty` and `pyright` treat the codebase as fully typed
-- Keep modules small and focused; shared logic should live inside the `nhd` package
+- Keep modules small and focused; shared logic should live inside the primary package namespace
 - When adding new dependencies, use `uv add` (or `uv add --dev` for development dependencies)
