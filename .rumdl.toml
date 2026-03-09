@@ -61,7 +61,7 @@ style = "asterisk"  # Options: "consistent", "asterisk", "underscore"
 style = "asterisk"  # Options: "consistent", "asterisk", "underscore"
 
 [MD054]
-autolink = false  # Allow <https://example.com>
+autolink = true  # Allow <https://example.com>
 inline = true  # Allow [text](url) and ![alt](url)
 full = false  # Allow [text][ref] with separate [ref]: url definition
 collapsed = false  # Allow [text][] with separate [text]: url definition
