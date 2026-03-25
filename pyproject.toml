@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "All things foobar"
 readme = "README.md"
 requires-python = ">=3.13,<3.14"
-authors = [{ name = "Martim Lobao", email = "martim@foobar.com" }]
+authors = [{ name = "Martim Lobao", email = "dev@lobao.io" }]
 dependencies = [
   "alembic>=1.18.4",
   "fastapi>=0.129.0",
@@ -60,6 +60,13 @@ options = "check --fix REVISION_SCRIPT_FILENAME"
 [tool.pyright]
 include = ["src", "tests"]
 typeCheckingMode = "strict"
+executionEnvironments = [
+  { root = "src", extraPaths = ["src", "."] },
+  { root = "tests", extraPaths = ["src", "."], reportPrivateUsage = false },
+]
 
 [tool.pytest]
-addopts = ["--cov-fail-under=90", "--cov=src"]
+addopts = ["--cov-fail-under=100", "--cov=src"]
+testpaths = [
+  "tests",
+]
