@@ -3,8 +3,9 @@
 > [!IMPORTANT]
 > This file contains one-time bootstrap instructions for repositories created
 > from the template. Apply this workflow before standard feature work, then
-> delete this file when complete (unless the repository name is `template`,
-> where this file must be ignored and preserved).
+> delete this file when complete and the Bootstrap Handoff section from the
+> AGENTS.md file (unless the repository name is `template`, where this file must
+> be ignored and preserved).
 
 ## Purpose
 
