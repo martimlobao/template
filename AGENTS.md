@@ -12,7 +12,8 @@
 > not delete `BOOTSTRAP.md`.
 >
 > In non-`template` repositories, treat `BOOTSTRAP.md` as one-time bootstrap
-> instructions and delete it after bootstrap is completed.
+> instructions and delete it after bootstrap is completed, along with the
+> Bootstrap Handoff section from this file.
 
 ## Tooling & Environment
 
