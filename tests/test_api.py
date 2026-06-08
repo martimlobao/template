@@ -4,7 +4,8 @@ import runpy
 import warnings
 from unittest.mock import patch
 
-from fastapi.testclient import TestClient
+from httpx2 import Response
+from starlette.testclient import TestClient
 
 from foobar.api.main import app, main
 
@@ -13,6 +14,7 @@ def test_health() -> None:
     """Health endpoint returns ok status."""
     client = TestClient(app)
     response = client.get("/health")
+    assert isinstance(response, Response)
     assert response.status_code == 200
     assert response.json() == {"status": "ok"}
 
