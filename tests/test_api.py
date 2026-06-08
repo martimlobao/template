@@ -2,11 +2,10 @@
 
 import runpy
 import warnings
-from typing import cast
 from unittest.mock import patch
 
-from fastapi.testclient import TestClient
-from httpx import Response
+from httpx2 import Response
+from starlette.testclient import TestClient
 
 from foobar.api.main import app, main
 
@@ -14,7 +13,8 @@ from foobar.api.main import app, main
 def test_health() -> None:
     """Health endpoint returns ok status."""
     client = TestClient(app)
-    response = cast("Response", client.get("/health"))  # pyright: ignore[reportUnknownMemberType]
+    response = client.get("/health")
+    assert isinstance(response, Response)
     assert response.status_code == 200
     assert response.json() == {"status": "ok"}
 
