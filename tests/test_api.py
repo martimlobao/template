@@ -14,7 +14,7 @@ from foobar.api.main import app, main
 def test_health() -> None:
     """Health endpoint returns ok status."""
     client = TestClient(app)
-    response = cast(Response, client.get("/health"))  # pyright: ignore[reportUnknownMemberType]
+    response = cast("Response", client.get("/health"))  # pyright: ignore[reportUnknownMemberType]
     assert response.status_code == 200
     assert response.json() == {"status": "ok"}
 
